@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 public class BalloonWindow extends JFrame implements ActionListener {
@@ -41,6 +42,7 @@ public class BalloonWindow extends JFrame implements ActionListener {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 					paused = !paused;
+					gamePanel.setPaused(paused);
 				}
 			}
 		});
@@ -48,9 +50,6 @@ public class BalloonWindow extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (paused) {
-			return;
-		}
 		gamePanel.move();
 //		balloon.repaint(new Rectangle(balloon.x - 5, balloon.y - 5, 110, 110));
 		gamePanel.repaint();
